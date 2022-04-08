@@ -1,3 +1,2 @@
-ErrorDocument 404 http://fuchs.guillaume.free.fr/404.html
-ErrorDocument 403 http://fuchs.guillaume.free.fr/404.html
-
+ErrorDocument 404 <http://gfuchs15.github.io/404.html>
+ErrorDocument 403 <http://gfuchs15.github.io/404.html>
