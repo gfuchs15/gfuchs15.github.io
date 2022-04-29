@@ -1,25 +1,221 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <title>Guillaume Fuchs : home page</title>
+  <title>Guillaume Fuchs: home page</title>
   <meta name="description" content="Guillaume Fuchs Home Page, scientist in speech and audio processing">
-  <meta name="keywords" content="guillaume fuchs, speech, audio, coding, compression, signal processing">
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="keywords" content="guillaume, fuchs, speech, audio, coding, compression, signal processing">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Style the body */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    /* Header/logo Title */
+    .header {
+      padding: 10px;
+      text-align: center;
+      background: #09cd68;
+      color: white;
+    }
+
+    /* Increase the font size of the heading */
+    .header h1 {
+      font-size: 40px;
+    }
+
+    /* Style the top navigation bar */
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    /* Style the navigation bar links */
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    /* Right-aligned link */
+    .navbar a.right {
+      float: right;
+    }
+
+    /* Change color on hover */
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    /* Column container */
+    .row {
+      display: -ms-flexbox;
+      /* IE10 */
+      display: flex;
+      -ms-flex-wrap: wrap;
+      /* IE10 */
+      flex-wrap: wrap;
+    }
+
+    /* Create two unequal columns that sits next to each other */
+    /* Sidebar/left column */
+    .side {
+      -ms-flex: 20%;
+      /* IE10 */
+      flex: 20%;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    /* Main column */
+    .main {
+      -ms-flex: 80%;
+      /* IE10 */
+      flex: 80%;
+      background-color: white;
+      padding: 20px;
+    }
+
+    /* Fake image, just for this example */
+    .fakeimg {
+      background-color: #aaa;
+      width: 100%;
+      padding: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 20px;
+      text-align: center;
+      background: #ddd;
+    }
+
+    /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 700px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+
+    /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+    @media screen and (max-width: 400px) {
+      .navbar a {
+        float: none;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
-<!frameset rows="*,40" frameborder="NO" border="0" framespacing="0">
-  <frameset rows="60,*" cols="*" framespacing="0" frameborder="NO" border="0">
-    <frame src="menu_en.htm" name="topFrame" scrolling="NO"></frame>
-    <frame src="home_en.htm" name="mainFrame">
-  </frameset>
+<body>
 
-  <!frame src="bottom.htm" name="bottomFrame" scrolling="NO">
-    <! /frameset>
-      <noframes>
+  <div class="header">
+    <h1>Guillaume Fuchs</h1>
+    <p>Home page</p>
+  </div>
 
-        <body>
-        </body>
-      </noframes>
+  <div class="navbar">
+    <a href="data/cv_gb_2022_web.pdf">Curriculun Vitae</a> &nbsp;
+    <!-- <a href="#" class="right">Link</a> -->
+  </div>
+
+  <div class="row">
+    <div class="side">
+      <h2>Contact</h2>
+      Fraunhofer IIS, Audio Abteilung<br>
+      Am Wolfsmantel 33<br>
+      91058 Erlangen, Germany<br>
+      <h5>E-mail:</h5>
+      <a href="mailto:guillaume.fuchs@iis.fraunhofer.de">guillaume.fuchs(at)iis.fraunhofer.de</a><br>
+      <h5>On internet:</h5>
+      <a target="_blank" href="https://www.linkedin.com/in/guillaume-fuchs-a0612065/">Linkedin</a><br>
+      <a target="_blank" href="https://scholar.google.com/citations?hl=en&user=5rELlQcAAAAJ">Google Scholar</a><br>
+      <a target="_blank"
+        href="https://publica.fraunhofer.de/entities/person/8cd6e1e1-1ac9-4d29-90ae-ca11d83ef902/details">Fraunhofer
+        Publica</a>
+      <!-- <div class="fakeimg" style="height:60px;">Image</div><br> -->
+    </div>
+    <div class="main">
+      <h2>Scientist - <a target="_blank" href="http://www.iis.fraunhofer.de">Fraunhofer IIS</a>, Germany</h2>
+      <h5>Since 2007</h5>
+      <p>
+        I work currently for the Fraunhofer Integrated Circuit Institute (IIS) in Erlangen, Germany.
+        My field of research is digital signal processing applied to audio signal and in particular to speech and music
+        compression.
+      </p>
+      <br>
+
+      <h2>Doctoral Thesis - <a target="_blank" href="http://usherbrooke.ca">University of Sherbrooke</a></h2>
+      <h5>January 2003 - December 2006</h5>
+      <p>I completed my doctoral studies between January 2003 and December 2006 at the University of Sherbrooke
+        (Quebec, Canada) in the Speech and Audio Coding Research Group.
+        (<a target="_blank" href="https://www.gegi.usherbrooke.ca/audio/">GRPA</a>).<br>
+        The thesis was supported by&nbsp; the <a target="_blank" href="http://www.voiceage.com/">VoiceAge</a>
+        company (Montr&eacute;al, Qu&eacute;bec).<br><br>
+      </p>
+      <b style="font-style: italic;">Title: Scalable Audio Coding at Low Bit-Rates</b>
+      <p align="justify">The thesis work focused
+        on the digital audio compression, a technique required for reliable communication of speech and
+        audio.
+        Communication networks tend to increase their capabilities
+        and the integration of services over a shared inter-networks infrastructure based mainly on the IP
+        technology.&nbsp; The
+        implication for compression technologies is that modern coders have to
+        operate in heteregeneous environments with different capacities and involving different inputs.
+        Consequently, audio encoders need to be able to adapt to varying network conditions and the varying
+        nature of audio content.
+        Scalable coding is one of the solutions that allows such an adaptation.
+        This study gives an overview of the possibilities of scalable audio coding for communication and
+        proposes a practical solution to code speech from as low as 8 kbit/s and make its quality scalable
+        with birate, being able to transmit music from 24 kbit/s while keeping the delay and
+        complexity low. </p>
+      <p align="justify"><em style="font-weight: bold; font-style: italic;"><strong>Keywords</strong></em><span
+          style="font-weight: bold; font-style: italic;"> :</span>
+        audio and speech coding, successive reffinement and algebraic quantization</p>
+      <a target="_blank" href="data/these.pdf">[Thesis (fr)]</a>
+      <br>
+
+      <h2>Selected publications</a></h2>
+      <h5>Speech synthesis/coding with DNNs</h5>
+      <a href="data/2108.04051.pdf">"A
+        Streamwise GAN Vocoder for Wideband Speech Coding at Very Low Bit Rate"</a>
+      <a target="_blank" href="https://arxiv.org/abs/2108.04051">[arxiv]</a>
+      <a target="_blank" href="https://fhgspco.github.io/ssmgan_spco/">[demo]</a><br>
+
+      <a href="data/2011.01557.pdf">"StyleMelGAN: An
+        Efficient High-Fidelity Adversarial Vocoder with Temporal Adaptive Normalization"</a>
+      <a target="_blank" href="https://arxiv.org/abs/2011.01557">[arxiv]</a>
+      <a target="_blank" href="https://fhgspco.github.io/smgan/">[demo]</a><br>
+
+      <h5>MPEG-H</h5>
+      <a href="data/Development_of_the_MPEG-H_TV_Audio_System_for_ATSC_3.0.pdf">"Development of the
+        MPEG-H TV Audio System for ATSC 3.0"</a><br>
+
+      <h5>Switched audio coding</h5>
+      <a href="data/1570096727.pdf">"A ROBUST SPEECH/MUSIC DISCRIMINATOR FOR SWITCHED AUDIO
+        CODING"</a><br>
+      <a target="_blank" href="data/ICASSP2009_Neuendorf.pdf">"UNIFIED SPEECH AND AUDIO
+        CODING SCHEME FOR HIGH QUALITY AT LOW BITRATES"</a><br>
+      <br>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <h2>Last update 04.2022</h2>
+  </div>
+
+</body>
 
 </html>
