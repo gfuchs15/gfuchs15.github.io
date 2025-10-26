@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pace Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        label {
+            min-width: 120px;
+        }
+        input, select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pace Calculator</h1>
+        
+        <div class="input-group">
+            <label for="discipline">Discipline:</label>
+            <select id="discipline">
+                <option value="running">Running</option>
+                <option value="cycling">Cycling</option>
+                <option value="swimming">Swimming</option>
+                <option value="triathlon">Triathlon</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label for="distance">Distance:</label>
+            <input type="number" id="distance" placeholder="Enter distance" step="0.01">
+            <select id="distanceUnit">
+                <option value="km">Kilometers</option>
+                <option value="m">Meters</option>
+                <option value="mi">Miles</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label for="hours">Time:</label>
+            <input type="number" id="hours" placeholder="Hours" min="0" max="99">
+            <input type="number" id="minutes" placeholder="Minutes" min="0" max="59">
+            <input type="number" id="seconds" placeholder="Seconds" min="0" max="59">
+        </div>
+        
+        <button onclick="calculatePace()">Calculate Pace</button>
+        
+        <div id="results" class="results"></div>
+    </div>
+
+    <script>
+        function calculatePace() {
+            // Get input values
+            const discipline = document.getElementById('discipline').value;
+            let distance = parseFloat(document.getElementById('distance').value);
+            const distanceUnit = document.getElementById('distanceUnit').value;
+            const hours = parseInt(document.getElementById('hours').value) || 0;
+            const minutes = parseInt(document.getElementById('minutes').value) || 0;
+            const seconds = parseInt(document.getElementById('seconds').value) || 0;
+            
+            // Validate inputs
+            if (isNaN(distance) || distance <= 0) {
+                alert("Please enter a valid distance");
+                return;
+            }
+            
+            // Convert distance to kilometers
+            switch(distanceUnit) {
+                case 'm':
+                    distance = distance / 1000;
+                    break;
+                case 'mi':
+                    distance = distance * 1.60934;
+                    break;
+            }
+            
+            // Calculate total time in hours and seconds
+            const totalTimeHours = hours + minutes/60 + seconds/3600;
+            const totalTimeSeconds = hours*3600 + minutes*60 + seconds;
+            
+            // Calculate pace and speed
+            const pacePerKmSeconds = totalTimeSeconds / distance;
+            const speedKmh = distance / totalTimeHours;
+            
+            // Format pace as mm:ss per km
+            const paceMinutes = Math.floor(pacePerKmSeconds / 60);
+            const paceSeconds = Math.floor(pacePerKmSeconds % 60);
+            const formattedPace = `${paceMinutes}:${paceSeconds < 10 ? '0' : ''}${paceSeconds}`;
+            
+            // Define standard distances for each discipline
+            const standardDistances = {
+                running: [
+                    {name: "5K", distance: 5},
+                    {name: "10K", distance: 10},
+                    {name: "Half Marathon", distance: 21.0975},
+                    {name: "Marathon", distance: 42.195}
+                ],
+                cycling: [
+                    {name: "10K", distance: 10},
+                    {name: "25K", distance: 25},
+                    {name: "50K", distance: 50},
+                    {name: "100K", distance: 100}
+                ],
+                swimming: [
+                    {name: "500m", distance: 0.5},
+                    {name: "1K", distance: 1},
+                    {name: "2K", distance: 2},
+                    {name: "5K", distance: 5}
+                ],
+                triathlon: [
+                    {name: "Sprint", distance: 25.65}, // Approximate total
+                    {name: "Olympic", distance: 51.5}, // Approximate total
+                    {name: "Half Ironman", distance: 111.8}, // Approximate total
+                    {name: "Ironman", distance: 226} // Approximate total
+                ]
+            };
+            
+            // Calculate times for standard distances
+            const standardResults = standardDistances[discipline].map(item => {
+                const timeSeconds = pacePerKmSeconds * item.distance;
+                const stdHours = Math.floor(timeSeconds / 3600);
+                const stdMinutes = Math.floor((timeSeconds % 3600) / 60);
+                const stdSeconds = Math.floor(timeSeconds % 60);
+                const formattedTime = `${stdHours}:${stdMinutes < 10 ? '0' : ''}${stdMinutes}:${stdSeconds < 10 ? '0' : ''}${stdSeconds}`;
+                
+                return {
+                    name: item.name,
+                    distance: item.distance,
+                    time: formattedTime
+                };
+            });
+            
+            // Display results
+            let resultsHTML = `
+                <h2>Results</h2>
+                <p><strong>Pace:</strong> ${formattedPace} per km</p>
+                <p><strong>Speed:</strong> ${speedKmh.toFixed(2)} km/h</p>
+                
+                <h3>Estimated Times for Standard Distances</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Distance (km)</th>
+                            <th>Estimated Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            standardResults.forEach(result => {
+                resultsHTML += `
+                    <tr>
+                        <td>${result.name}</td>
+                        <td>${result.distance}</td>
+                        <td>${result.time}</td>
+                    </tr>
+                `;
+            });
+            
+            resultsHTML += `
+                    </tbody>
+                </table>
+            `;
+            
+            document.getElementById('results').innerHTML = resultsHTML;
+        }
+    </script>
+</body>
+</html>
